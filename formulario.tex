@@ -1,0 +1,158 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% Margini stretti per far stare il formulario in mezza pagina A4
+\geometry{a4paper,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
+
+% Spaziatura compatta
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\abovedisplayshortskip}{2pt}
+\setlength{\belowdisplayshortskip}{2pt}
+\setlength{\columnsep}{12pt}
+
+% Comando per i titoletti delle sotto-sezioni
+\newcommand{\sub}[1]{\smallskip\noindent\textbf{#1}\par\nobreak}
+
+\begin{document}
+
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\begin{center}\textbf{\large 1) Determinazione specifiche di progetto}\end{center}
+\vspace{-4pt}
+\footnotesize
+\textbf{Incognite:} $G_F$;
+$K_c$ da $\varepsilon_r$; $K_c$ da $d_a$ e/o $d_p$; $\omega_c$ da $d_p$ e/o $d_s$; $\zeta,\,T_{p,0},\,S_{p,0}$ da $\hat{s}$; $\omega_c$ da $t_r$;
+$\omega_c$ da $t_{s,\varepsilon\%}$; \;$\nu$ da $d_a$ e/o $d_p$; \;$M_S^{LF}$, $M_T^{HF}$.
+
+\begin{multicols}{2}
+
+\sub{a) Calcolo $G_F$}
+\[
+G_F=\frac{1}{G_s\,K_d}
+\]
+$K_p$ = guadagno di $G_p$ in cost.\ tempo.
+($p$: poli nell'origine di $G_p$ spostati in cost.\ tempo)\\
+
+\sub{b) Calcolo $\nu$ e $K_c$ da $\varepsilon_r$}
+se $\varepsilon_r=0 \rightarrow \nu>h-p, |K_c|=\forall$\\
+se $\varepsilon_r\neq 0 \rightarrow \nu\geq h-p$ \;\;
+\[
+|K_c|\geq
+\begin{cases}
+\left|\dfrac{R_0\,K_d^{2}}{\varepsilon_r\,K_p\,G_a}\right| & \text{se } \nu+p\neq 0\\[10pt]
+\dfrac{\dfrac{R_0\,K_d^{2}}{\varepsilon_r}-K_d}{K_p\,G_a} & \text{se } \nu+p=0
+\end{cases}
+\]
+
+\sub{c) Calcolo $K_c$ da $d_a$}
+\[
+|K_c|\geq\frac{|D_{a,0}|}{\varepsilon_{d_a}\,|G_a\,G_s\,G_F|}\quad\text{se } \varepsilon_{d_a}\neq 0\ \Rightarrow\ \nu\geq h_a
+\]
+\[
+|K_c|=\forall\quad\text{se } \varepsilon_{d_a}=0\ \Rightarrow\ \nu>h_a
+\]
+
+\noindent\begin{minipage}{\columnwidth}
+\sub{d) Calcolo $K_c$ da $d_p$ (polinomiale) o $\omega_c/M_S^{LF}$ (sinusoidale)}
+\emph{Polinomiale:}
+\[
+|K_c|\geq\frac{|D_{p,0}|}{\varepsilon_{d_p}\,|G_a\,G_s\,G_F\,K_p|}\quad\text{se } \varepsilon_{d_p}\neq 0\ \Rightarrow\ \nu\geq h_p-p
+\]
+\[
+|K_c|=\forall\quad\text{se } \varepsilon_{d_p}=0\ \Rightarrow\ \nu>h_p-p
+\]
+\emph{Sinusoidale:}
+\[
+M_S^{LF}=\frac{\rho_p}{a_p},\qquad M_{S,\,dB}^{LF}=20\log_{10}M_S^{LF}
+\]
+\[
+\omega_L=\omega_p\cdot 10^{-\,M_{S,\,dB}^{LF}/40},\qquad \omega_c\geq 2\,\omega_L
+\]
+\end{minipage}
+
+\sub{e) Calcolo $\omega_c/M_T^{HF}$ da $d_s$ (sinusoidale)}
+\[
+M_T^{HF}=\frac{\rho_s\,G_s}{a_s},\qquad M_{T,\,dB}^{HF}=20\log_{10}M_T^{HF}
+\]
+\[
+\omega_H=\omega_s\cdot 10^{\,M_{T,\,dB}^{HF}/40},\qquad \omega_c\leq\frac{\omega_H}{2}
+\]
+
+\sub{f) Calcolo $\zeta,\,T_{p,0},\,S_{p,0}$ da $\hat{s}$}
+\[
+\zeta\ge\frac{|\ln(\hat{s})|}{\sqrt{\pi^{2}+\ln^{2}(\hat{s})}}
+\]
+\[
+T_{p,0}=\frac{1}{2\zeta\sqrt{1-\zeta^{2}}}
+\]
+\[
+S_{p,0}=\frac{2\zeta\sqrt{2+4\zeta^{2}+2\sqrt{1+8\zeta^{2}}}}{\sqrt{1+8\zeta^{2}}+4\zeta^{2}-1}
+\]
+
+\sub{g) Calcolo $\omega_c$ da $t_r$ e $\varepsilon_{s,\%}$}
+\[
+t_r:\quad \omega_c\geq\left(\frac{\pi-\arccos(\zeta)}{t_r\sqrt{1-\zeta^{2}}}\right)\sqrt{\sqrt{1+4\zeta^{4}}-2\zeta^{2}}
+\]
+\[
+t_{s,\alpha\%}:\ \omega_c\geq\left(\frac{|\ln(\alpha\%)|}{\zeta\,t_{s,\alpha\%}}\right)\sqrt{\sqrt{1+4\zeta^{4}}-2\zeta^{2}}
+\]
+
+\end{multicols}
+}}
+\end{center}
+
+\vspace{5mm}
+
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\begin{center}\textbf{\large 2) Progetto del Sistema di Controllo}\end{center}
+\vspace{-4pt}
+\footnotesize
+
+\begin{multicols}{2}
+
+\noindent\begin{minipage}{\columnwidth}
+\sub{Passo 1: Studio del segno di $K_c$ e stabilizzabilità}
+a. Scelgo un segno e calcolo $L_{in}(s)$:
+\[
+L_{in}(s) = \frac{K_c}{s^\nu} \cdot G_F \, G_a \, G_p \, G_s
+\]
+b. Tracciare il diagramma di Nyquist di $L_{in}(s)$ e calcolo \\ $P_{cl}=N+P_{ol}$, dove:\\
+\hspace*{3mm} $N$: intersezioni semiretta\\
+\hspace*{3mm} $P_{ol}$: poli con $Re(p_i) > 0$ (di solito nullo)
+\begin{itemize}[leftmargin=*, nosep, before=\vspace{-2pt}, after=\vspace{-2pt}]
+    \item $P_{cl}$ pari $\rightarrow$ \textbf{Stabilizzabile}
+    \item $P_{cl}$ dispari $\rightarrow$ \textbf{Cambio segno di $K_c$}
+\end{itemize}
+c. Scelgo $K_c$ poco più grande del vincolo (se c'è).
+
+\vspace{2pt}
+{\scriptsize
+\[
+[N_{L_{in}}, D_{L_{in}}] = \mathtt{tfdata}(L_{in}, \text{``v''})
+\]
+\[
+\mathtt{myngridst}(T_{p,0}, S_{p,0})
+\]
+\[
+\mathtt{nyquist1}(N_{L_{in}}, D_{L_{in}})
+\]
+}
+\end{minipage}
+
+\end{multicols}
+}}
+\end{center}
+
+\end{document}
