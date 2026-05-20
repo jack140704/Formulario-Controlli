@@ -53,7 +53,17 @@ se $\varepsilon_r\neq 0 \rightarrow \nu\geq h-p$ \;\;
 \end{cases}
 \]
 $K_p$ = guadagno di $G_p$ in cost.\ tempo.
-($p$: poli nell'origine di $G_p$ espresso in cost.\ tempo)\\
+($p$: poli nell'origine di $G_p$ espresso in cost.\ tempo)
+\vspace{2pt}
+{\scriptsize
+\[
+\mathtt{zpk\_gp = zpk(Gp);}
+\]
+\vspace{-4pt}
+\[
+\mathtt{zpk(zpk\_gp.Z, zpk\_gp.P, zpk\_gp.K, \text{`DisplayFormat'}, \text{`timeconstant'})}
+\]
+}
 
 \sub{c) Calcolo $K_c$ da $d_a$}
 \[
