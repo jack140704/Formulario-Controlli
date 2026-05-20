@@ -10,7 +10,6 @@
 \usepackage{xcolor}
 \usepackage{pdfpages}
 
-
 % Margini stretti per far stare il formulario in mezza pagina A4
 \geometry{a4paper,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
 
@@ -36,7 +35,6 @@
 \textbf{Incognite:} $G_F$;
 $K_c$ da $\varepsilon_r$; $K_c$ da $d_a$ e/o $d_p$; $\omega_c$ da $d_p$ e/o $d_s$; $\zeta,\,T_{p,0},\,S_{p,0}$ da $\hat{s}$; $\omega_c$ da $t_r$;
 $\omega_c$ da $t_{s,\varepsilon\%}$; \;$\nu$ da $d_a$ e/o $d_p$; \;$M_S^{LF}$, $M_T^{HF}$.
-
 \begin{multicols}{2}
 
 \sub{a) Calcolo $G_F$}
@@ -59,7 +57,10 @@ $K_p$ = guadagno di $G_p$ in cost.\ tempo.
 
 \sub{c) Calcolo $K_c$ da $d_a$}
 \[
-|K_c|\geq\frac{|D_{a,0}|}{\varepsilon_{d_a}\,|G_a\,G_s\,G_F|}\quad\text{se } \varepsilon_{d_a}\neq 0\ \Rightarrow\ \nu\geq h_a
+|e_{\infty}^{d_a}| = \left|\lim_{t\to\infty} e_{d_a}(t)\right| = \left|\lim_{t\to\infty} y_{d_a}(t)\right| = \left|\lim_{s\to 0} s\, G_{d_a y}(s)\, d_a(s)\right|
+\]
+\[
+|K_c|\geq\left|\frac{D_{a,0}}{\varepsilon_{d_a}\,G_a\,G_s\,G_F}\right|\quad\text{se } \varepsilon_{d_a}\neq 0\ \Rightarrow\ \nu\geq h_a
 \]
 \[
 |K_c|=\forall\quad\text{se } \varepsilon_{d_a}=0\ \Rightarrow\ \nu>h_a
@@ -69,12 +70,18 @@ $K_p$ = guadagno di $G_p$ in cost.\ tempo.
 \sub{d) Calcolo $K_c$ da $d_p$ (polinomiale) o $\omega_c/M_S^{LF}$ (sinusoidale)}
 \emph{Polinomiale:}
 \[
-|K_c|\geq\frac{|D_{p,0}|}{\varepsilon_{d_p}\,|G_a\,G_s\,G_F\,K_p|}\quad\text{se } \varepsilon_{d_p}\neq 0\ \Rightarrow\ \nu\geq h_p-p
+|e_{\infty}^{d_p}| = \left|\lim_{t\to\infty} e_{d_p}(t)\right| = \left|\lim_{t\to\infty} y_{d_p}(t)\right| = \left|\lim_{s\to 0} s\, G_{d_p y}(s)\, d_p(s)\right|
+\]
+\[
+|K_c|\geq\left|\frac{D_{p,0}}{\varepsilon_{d_p}\,G_a\,G_s\,G_F\,K_p}\right|\quad\text{se } \varepsilon_{d_p}\neq 0\ \Rightarrow\ \nu\geq h_p-p
 \]
 \[
 |K_c|=\forall\quad\text{se } \varepsilon_{d_p}=0\ \Rightarrow\ \nu>h_p-p
 \]
 \emph{Sinusoidale:}
+\[
+|e_{\infty}^{d_p}| = \left|G_{d_p y}(j\omega_p) a_p \sin(\omega t + \varphi_p)\right| \leq |S(j\omega_p)|\
+\]
 \[
 M_S^{LF}=\frac{\rho_p}{a_p},\qquad M_{S,\,dB}^{LF}=20\log_{10}M_S^{LF}
 \]
@@ -84,6 +91,9 @@ M_S^{LF}=\frac{\rho_p}{a_p},\qquad M_{S,\,dB}^{LF}=20\log_{10}M_S^{LF}
 \end{minipage}
 
 \sub{e) Calcolo $\omega_c/M_T^{HF}$ da $d_s$ (sinusoidale)}
+\[
+|e_{\infty}^{d_s}| = \left|G_{d_s y}(j\omega_s) a_s \sin(\omega t + \varphi_s)\right| \leq |T(j\omega_s)|\
+\]
 \[
 M_T^{HF}=\frac{\rho_s\,G_s}{a_s},\qquad M_{T,\,dB}^{HF}=20\log_{10}M_T^{HF}
 \]
@@ -110,6 +120,8 @@ t_r:\quad \omega_c\geq\left(\frac{\pi-\arccos(\zeta)}{t_r\sqrt{1-\zeta^{2}}}\rig
 t_{s,\alpha\%}:\ \omega_c\geq\left(\frac{|\ln(\alpha\%)|}{\zeta\,t_{s,\alpha\%}}\right)\sqrt{\sqrt{1+4\zeta^{4}}-2\zeta^{2}}
 \]
 
+\sub{h) Conclusioni}
+Scelgo $\nu$ più grande tra i $\nu$ che ho trovato e prendo il $K_c$ più grande tra quelli che ho trovato \underline{con quel $\nu$}.
 \end{multicols}
 }}
 \end{center}
@@ -126,18 +138,21 @@ t_{s,\alpha\%}:\ \omega_c\geq\left(\frac{|\ln(\alpha\%)|}{\zeta\,t_{s,\alpha\%}}
 
 \noindent\begin{minipage}{\columnwidth}
 \sub{Passo 1: Studio del segno di $K_c$ e stabilizzabilità}
-a. Scelgo un segno e calcolo $L_{in}(s)$:
+a.
+Scelgo un segno e calcolo $L_{in}(s)$:
 \[
 L_{in}(s) = \frac{K_c}{s^\nu} \cdot G_F \, G_a \, G_p \, G_s
 \]
-b. Tracciare il diagramma di Nyquist di $L_{in}(s)$ e calcolo \\ $P_{cl}=N+P_{ol}$, dove:\\
+b.
+Tracciare il diagramma di Nyquist di $L_{in}(s)$ e calcolo \\ $P_{cl}=N+P_{ol}$, dove:\\
 \hspace*{3mm} $N$: intersezioni semiretta\\
 \hspace*{3mm} $P_{ol}$: poli con $Re(p_i) > 0$ (di solito nullo)
 \begin{itemize}[leftmargin=*, nosep, before=\vspace{-2pt}, after=\vspace{-2pt}]
     \item $P_{cl}$ pari $\rightarrow$ \textbf{Stabilizzabile}
     \item $P_{cl}$ dispari $\rightarrow$ \textbf{Cambio segno di $K_c$}
 \end{itemize}
-c. Scelgo $K_c$ poco più grande del vincolo (se c'è).
+c.
+Scelgo $K_c$ poco più grande del vincolo (se c'è).
 
 \vspace{2pt}
 {\scriptsize
@@ -156,7 +171,6 @@ c. Scelgo $K_c$ poco più grande del vincolo (se c'è).
 \end{multicols}
 }}
 \end{center}
-
 
 \includepdf[pages={-}]{reti_di_compensazione.pdf}
 
