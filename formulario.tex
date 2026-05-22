@@ -9,6 +9,7 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{pdfpages}
+\usepackage{tabularx} % <-- Aggiunto per la formattazione della tabella
 
 % Margini stretti per far stare il formulario in mezza pagina A4
 \geometry{a4paper,left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
@@ -67,7 +68,8 @@ $K_p$ = guadagno di $G_p$ in cost.\ tempo.
 
 \sub{c) Calcolo $K_c$ da $d_a$}
 \[
-|e_{\infty}^{d_a}| = \left|\lim_{t\to\infty} e_{d_a}(t)\right| = \left|\lim_{t\to\infty} y_{d_a}(t)\right| = \left|\lim_{s\to 0} s\, G_{d_a y}(s)\, d_a(s)\right|
+|e_{\infty}^{d_a}|
+= \left|\lim_{t\to\infty} e_{d_a}(t)\right| = \left|\lim_{t\to\infty} y_{d_a}(t)\right| = \left|\lim_{s\to 0} s\, G_{d_a y}(s)\, d_a(s)\right|
 \]
 \[
 |K_c|\geq\left|\frac{D_{a,0}}{\varepsilon_{d_a}\,G_a\,G_s\,G_F}\right|\quad\text{se } \varepsilon_{d_a}\neq 0\ \Rightarrow\ \nu = h_a
@@ -80,7 +82,8 @@ $K_p$ = guadagno di $G_p$ in cost.\ tempo.
 \sub{d) Calcolo $K_c$ da $d_p$ (polinomiale) o $\omega_c/M_S^{LF}$ (sinusoidale)}
 \emph{Polinomiale:}
 \[
-|e_{\infty}^{d_p}| = \left|\lim_{t\to\infty} e_{d_p}(t)\right| = \left|\lim_{t\to\infty} y_{d_p}(t)\right| = \left|\lim_{s\to 0} s\, G_{d_p y}(s)\, d_p(s)\right|
+|e_{\infty}^{d_p}|
+= \left|\lim_{t\to\infty} e_{d_p}(t)\right| = \left|\lim_{t\to\infty} y_{d_p}(t)\right| = \left|\lim_{s\to 0} s\, G_{d_p y}(s)\, d_p(s)\right|
 \]
 \[
 |K_c|\geq\left|\frac{D_{p,0}}{\varepsilon_{d_p}\,G_a\,G_s\,G_F\,K_p}\right|\quad\text{se } \varepsilon_{d_p}\neq 0\ \Rightarrow\ \nu = h_p-p
@@ -90,7 +93,8 @@ $K_p$ = guadagno di $G_p$ in cost.\ tempo.
 \]
 \emph{Sinusoidale:}
 \[
-|e_{\infty}^{d_p}| = \left|G_{d_p y}(j\omega_p) a_p \sin(\omega t + \varphi_p)\right| \leq |S(j\omega_p)|\
+|e_{\infty}^{d_p}| = \left|G_{d_p y}(j\omega_p) a_p \sin(\omega t + \varphi_p)\right|
+\leq |S(j\omega_p)|\
 \]
 \[
 M_S^{LF}=\frac{\rho_p}{a_p},\qquad M_{S,\,dB}^{LF}=20\log_{10}M_S^{LF}
@@ -102,7 +106,8 @@ M_S^{LF}=\frac{\rho_p}{a_p},\qquad M_{S,\,dB}^{LF}=20\log_{10}M_S^{LF}
 
 \sub{e) Calcolo $\omega_c/M_T^{HF}$ da $d_s$ (sinusoidale)}
 \[
-|e_{\infty}^{d_s}| = \left|G_{d_s y}(j\omega_s) a_s \sin(\omega t + \varphi_s)\right| \leq |T(j\omega_s)|\
+|e_{\infty}^{d_s}| = \left|G_{d_s y}(j\omega_s) a_s \sin(\omega t + \varphi_s)\right|
+\leq |T(j\omega_s)|\
 \]
 \[
 M_T^{HF}=\frac{\rho_s\,G_s}{a_s},\qquad M_{T,\,dB}^{HF}=20\log_{10}M_T^{HF}
@@ -136,7 +141,7 @@ Scelgo $\nu$ più grande tra i $\nu$ che ho trovato e prendo il $K_c$ più grand
 }}
 \end{center}
 
-\vspace{5mm}
+\vspace{1.5mm} % <-- Spazio ridotto
 
 \begin{center}
 \fbox{\parbox{0.97\textwidth}{%
@@ -179,6 +184,38 @@ Scelgo $K_c$ poco più grande del vincolo (se c'è).
 \end{minipage}
 
 \end{multicols}
+}}
+\end{center}
+
+\vspace{1.5mm} % <-- Spazio ridotto
+
+% --- NUOVA TABELLA DELLE RETI DI COMPENSAZIONE ---
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\begin{center}\textbf{\large 3) Principali reti di compensazione}\end{center}
+\vspace{-4pt}
+\footnotesize
+\renewcommand{\arraystretch}{1.8} % Allarga un po' le righe per le frazioni
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{3cm}|>{\raggedright\arraybackslash}p{4.8cm}|}
+\hline
+\textbf{\textit{Soluzione}} & \textbf{\textit{Formule utili}} & \textbf{\textit{Alternativa}} & \\
+\hline
+\textbf{\underline{Rete LEAD}}\newline aumento di modulo\newline aumento di fase\newline $R_d(s) = \dfrac{1 + \frac{s}{z_d}}{1 + \frac{s}{m_d z_d}}, m_d > 1$ 
+& $z_d = \dfrac{\omega_{cdes}}{\omega_{norm}}$ 
+& \textbf{\underline{Rete ZERO}} 
+& Da usare solo nel caso in cui $\nu > 0$ \\
+\hline
+\textbf{\underline{Rete LAG}}\newline diminuzione modulo\newline $R_i(s) = \dfrac{1 + \frac{s}{m_i p_i}}{1 + \frac{s}{p_i}}, m_i > 1$ 
+& $m_i = 10^{\frac{R_{db}}{20}}$\newline \newline $\omega_{norm} = \dfrac{\omega_{cdes}}{p_i}$ 
+& \underline{Diminuzione di $|K_c|$} 
+& Solo quando ho $K_c$ libero ($|K_c| = 1$) \\
+\hline
+\underline{Aumento di $|K_c|$}\newline aumento di modulo 
+& $K_c = K_{c,in} 10^{\frac{|K_{c,dB}^{add}|}{20}}$ 
+& $K_c = K_{c,in} 10^{\frac{-|K_{c,dB}^{sub}|}{20}}$ 
+& {\scriptsize $G_{ry}(s) = \frac{T(s)}{G_fG_s}r(t) + S(s)d_p(t) + S(s)G_pd_a(t) - \frac{T(s)}{G_s}d_s(t)$} \\
+\hline
+\end{tabularx}
 }}
 \end{center}
 
