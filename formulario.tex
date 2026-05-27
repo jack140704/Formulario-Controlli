@@ -188,13 +188,9 @@ Scelgo $K_c$ poco più grande del vincolo (se c'è).
 \noindent\begin{minipage}{\columnwidth}
 \sub{Passo 2: Reti di compensazione}
 Plot di $L_{in}(s)$ sul piano di Nichols e individuo $\omega_{c,des}$ scegliendo l'azione con le \textbf{reti di compensazione} per:
-\begin{itemize}[leftmargin=12pt, nosep, before=\vspace{-2pt}, after=\vspace{-2pt}]
-    \item[a.] portare $\omega_{c,des}$ in corrispondenza di 0 dB
-    \item[b.] portare il diagramma fuori dalla regione proibita
-\end{itemize}
 
 \sub{Passo 3: Simulazione}
-Simulare con \texttt{step(T/(Gs*Gf))} per le specifiche in transitorio. (Le altre su inseguimento e disturbi sono verificate se $K_c$ e $\nu$ sono OK).
+Simulare con \texttt{step(T/(Gs*Gf))} per le specifiche in transitorio. Se $\hat{s}$ non rispettato aumento provo ad aumentare $m_{i}$, se $t_{s,\alpha\%}$ non rispettato aumento provo ad aumentare $\omega_{des}$. (Le altre su inseguimento e disturbi sono verificate se $K_c$ e $\nu$ sono OK).
 
 \sub{Passo 4: Verifica Bode di T ed S}
 Verificare che i diagrammi stiano sotto i relativi spigoli.
@@ -226,7 +222,7 @@ Verificare che i diagrammi stiano sotto i relativi spigoli.
 \textbf{\underline{Rete LEAD}}\newline aumento di modulo\newline aumento di fase\newline $R_d(s) = \dfrac{1 + \frac{s}{z_d}}{1 + \frac{s}{m_d z_d}}, m_d > 1$ 
 & $z_d = \dfrac{\omega_{cdes}}{\omega_{norm}}$ 
 & \textbf{\underline{Rete ZERO}}\newline aumento di modulo\newline aumento di fase\newline $R_z(s) = \left(1 + \frac{s}{z}\right)$
-& Da usare solo nel caso in cui $\nu > 0$ (posso mettere al massimo $\nu$ reti zero)\\
+& Da usare solo nel caso in cui $\nu > 0$ (posso mettere al massimo $\nu$ reti zero) (Da preferire sempre alla rete LEAD)\\
 \hline
 \textbf{\underline{Rete LAG}}\newline diminuzione modulo\newline $R_i(s) = \dfrac{1 + \frac{s}{m_i p_i}}{1 + \frac{s}{p_i}}, m_i > 1$ 
 & $m_i = 10^{\frac{R_{db}}{20}}$\newline \newline $p_i = \dfrac{\omega_{cdes}}{\omega_{norm}}$ 
