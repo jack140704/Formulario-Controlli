@@ -190,7 +190,7 @@ Scelgo $K_c$ poco più grande del vincolo (se c'è).
 Plot di $L_{in}(s)$ sul piano di Nichols e individuo $\omega_{c,des}$ scegliendo l'azione con le \textbf{reti di compensazione} per:
 
 \sub{Passo 3: Simulazione}
-Simulare con \texttt{step(T/(Gs*Gf))} per le specifiche in transitorio. Se $\hat{s}$ non rispettato aumento provo ad aumentare $m_{i}$, se $t_{s,\alpha\%}$ non rispettato aumento provo ad aumentare $\omega_{des}$. (Le altre su inseguimento e disturbi sono verificate se $K_c$ e $\nu$ sono OK).
+Simulare con \texttt{step(T/(Gs*Gf))} per le specifiche in transitorio. Se $\hat{s}$ non rispettato aumento provo ad aumentare $\omega_{norm}$, se $t_{s,\alpha\%}$ non rispettato aumento provo ad aumentare $\omega_{des}$. (Le altre su inseguimento e disturbi sono verificate se $K_c$ e $\nu$ sono OK).
 
 \sub{Passo 4: Verifica Bode di T ed S}
 Verificare che i diagrammi stiano sotto i relativi spigoli.
