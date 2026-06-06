@@ -10,6 +10,7 @@
 \usepackage{xcolor}
 \usepackage{pdfpages}
 \usepackage{tabularx} % <-- Aggiunto per la formattazione della tabella
+\usepackage{graphicx}
 
 % Margini stretti per far stare il formulario in mezza pagina A4
 \geometry{a4paper,left=0.5cm,right=0.5cm,top=0.5cm,bottom=0.5cm}
@@ -27,6 +28,141 @@
 \newcommand{\sub}[1]{\smallskip\noindent\textbf{#1}\par\nobreak}
 
 \begin{document}
+
+\centerline{\textbf{\large Formulario Prima Parte}}
+\vspace{-1mm}
+
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\footnotesize
+\begin{multicols}{2}
+\centerline{\textbf{\underline{Soluzioni delle equazioni di stato}}}
+\vspace{-2pt}
+
+{\centering $x(t) = x_{zi}(t) + x_{zs}(t) \quad x(k) = x_{zi}(k) + x_{zs}(k)$\par}
+
+\vspace{2pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+\hline
+$X_{zi}(s) = (sI - A)^{-1}x(0)$ & $X_{zs}(s) = (sI - A)^{-1}BU(s)$ \\
+\hline
+$X_{zi}(z) = z(zI - A)^{-1}x(0)$ & $X_{zs}(z) = (zI - A)^{-1}BU(z)$ \\
+\hline
+\multicolumn{2}{|c|}{$y(t) = y_{zi}(t) + y_{zs}(t) \quad y(k) = y_{zi}(k) + y_{zs}(k)$} \\
+\hline
+$Y_{zi}(s) = C(sI - A)^{-1}x(0)$ & $Y_{zs}(s) = H(s)U(s)$ \\
+\hline
+$Y_{zi}(z) = C z(zI - A)^{-1}x(0)$ & $Y_{zs}(z) = H(z)U(z)$ \\
+\hline
+\end{tabularx}
+
+\columnbreak
+
+\centerline{\textbf{\underline{formule utili}}}
+\vspace{-2pt}
+
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3.8cm}|}
+\hline
+contributo poli complessi e coniugati (TC) \newline $2|R|e^{Re(p_i)t} \cdot \cos(Im(p_i)t + \angle R)$ & 
+$\mathcal{L}\left\{ \frac{t^n e^{-\lambda t}}{n!} \right\} = \frac{1}{(s + \lambda)^{n+1}}$ \\
+\hline
+contributo poli complessi e coniugati (TD) \newline $2|R||a|^k \cdot \cos(\angle a\, k + \angle R)$ & 
+$\mathcal{L}\{\dot{f}(t)\} = sF(s) - f(0)$ \\
+\hline
+$\mathcal{Z}\{a^k\} = \frac{z}{z-a}, \quad \tilde{F}(z) = \frac{F(z)}{z}$ & 
+$\mathcal{Z}\{f(k+1)\} = zF(z) - zf(0)$ \\
+\hline
+$\tau_i = \left| \frac{1}{Re(p_i)} \right|$ (costanti di tempo poli) & 
+$\mathcal{L}\{\varepsilon(t)\} = \frac{1}{s} \quad \mathcal{Z}\{\varepsilon(t)\} = \frac{z}{z-1}$ \\
+\hline
+\end{tabularx}
+\end{multicols}
+}}
+\end{center}
+
+\vspace{-1.5mm}
+
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\footnotesize
+\textbf{\underline{Linearizzazione di sistemi non LTI}}
+\vspace{2pt}
+
+\sub{Calcolo punti di equilibrio}
+\vspace{-2pt}
+\[
+\begin{cases} \dot{x} = f(x,u) \\ y = g(x,u) \end{cases} \rightarrow
+\begin{cases} \dot{x}_1 = f_1(x,u) \\ \dot{x}_2 = f_2(x,u) \end{cases} \xrightarrow[\text{derivate a zero}]{\text{impongo}}
+\begin{cases} f_1(x,u) = 0 \\ f_2(x,u) = 0 \end{cases} \Rightarrow
+\bar{x} = [\bar{x}_1\ \ \bar{x}_2\ \ \dots]
+\]
+
+\sub{Linearizzazione}
+\vspace{-2pt}
+\[
+\begin{cases} \delta\dot{x}(t) = A\delta x(t) + B\delta u(t) \\ \delta y(t) = C\delta x(t) + D\delta u(t) \end{cases}
+\]
+\vspace{2pt}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+$ A = \frac{\partial f(x,u)}{\partial x} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial f_1/\partial x_1 & \dots & \partial f_1/\partial x_n \\ \vdots & \ddots & \vdots \\ \partial f_n/\partial x_1 & \dots & \partial f_n/\partial x_n \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ &
+$ C = \frac{\partial g(x,u)}{\partial x} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial g_1/\partial x_1 & \dots & \partial g_1/\partial x_n \\ \vdots & \ddots & \vdots \\ \partial g_q/\partial x_1 & \dots & \partial g_q/\partial x_n \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ \\
+$ B = \frac{\partial f(x,u)}{\partial u} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial f_1/\partial u_1 & \dots & \partial f_1/\partial u_p \\ \vdots & \ddots & \vdots \\ \partial f_n/\partial u_1 & \dots & \partial f_n/\partial u_p \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ &
+$ D = \frac{\partial g(x,u)}{\partial u} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial g_1/\partial u_1 & \dots & \partial g_1/\partial u_p \\ \vdots & \ddots & \vdots \\ \partial g_q/\partial u_1 & \dots & \partial g_q/\partial u_p \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ \\
+\end{tabularx}
+}}
+\end{center}
+
+\vspace{-1.5mm}
+
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\footnotesize
+\noindent\textbf{\underline{Stabilità}} \quad $Spec(A) = \{\lambda_i \in \mathbb{C} \mid p_A(\lambda_i) = 0\}$=autovalori A \quad e = \texttt{eig(A)}; \texttt{[V, D]=eig(A)}
+
+\vspace{-2pt}
+\begin{minipage}{0.83\textwidth}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{|>{\itshape}p{2.3cm}|X|X|}
+\hline
+& \textbf{TEMPO CONTINUO} (vedi Criterio di Routh) & \textbf{TEMPO DISCRETO} (vedi Criterio di Jury) \\
+\hline
+asintoticamente \newline stabile & 
+\parbox[t]{0.45\linewidth}{$\forall x_0 \in \mathbb{R}^n,$\\$x_{zi}(t)$ limitata} \hfill
+\parbox[t]{0.45\linewidth}{$Re(\lambda_i) < 0 \; \forall i$} & 
+\parbox[t]{0.45\linewidth}{$\forall x_0 \in \mathbb{R}^n,$\\$x_{zi}(k)$ limitata} \hfill
+\parbox[t]{0.45\linewidth}{$|\lambda_i| < 1 \; \forall i$} \\
+\hline
+internamente \newline stabile & 
+\parbox[t]{0.45\linewidth}{$\forall x_0 \in \mathbb{R}^n,$\\$x_{zi}(t)$ limitata\\$\lim_{t\to\infty} x_{zi}(t) \neq 0$} \hfill
+\parbox[t]{0.45\linewidth}{$Re(\lambda_i) \leq 0 \; \forall i$\\$Re(\lambda_i) = 0, \mu_g = 1$} & 
+\parbox[t]{0.45\linewidth}{$\forall x_0 \in \mathbb{R}^n,$\\$x_{zi}(k)$ limitata\\$\lim_{k\to\infty} x_{zi}(k) \neq 0$} \hfill
+\parbox[t]{0.45\linewidth}{$|\lambda_i| \leq 1 \; \forall i$\\$|\lambda_i| = 1, \mu_g = 1$} \\
+\hline
+BIBO stabile & 
+\parbox[t]{0.45\linewidth}{$x_0 = 0$\\$\forall u(t)$ limitato\\$y_{zs}(t)$ limitato} \hfill
+\parbox[t]{0.45\linewidth}{$Re(p_i) < 0 \; \forall i$\\$p_i$ poli del sistema} & 
+\parbox[t]{0.45\linewidth}{$x_0 = 0$\\$\forall u(k)$ limitato\\$y_{zs}(k)$ limitato} \hfill
+\parbox[t]{0.45\linewidth}{$|p_i| < 1 \; \forall i$\\$p_i$ poli del sistema} \\
+\hline
+instabile & 
+\parbox[t]{0.45\linewidth}{$\exists x_0 \in \mathbb{R}^n,$\\$x_{zi}(t)$ illimitata} \hfill
+\parbox[t]{0.45\linewidth}{$\exists \lambda_i \mid Re(\lambda_i) > 0 $\\$\exists \lambda_i \mid Re(\lambda_i) = 0,$\\$\mu_g > 1$} & 
+\parbox[t]{0.45\linewidth}{$\exists x_0 \in \mathbb{R}^n,$\\$x_{zi}(k)$ illimitata} \hfill
+\parbox[t]{0.45\linewidth}{$\exists \lambda_i \mid |\lambda_i| > 1 $\\$\exists \lambda_i \mid |\lambda_i| = 1,$\\$\mu_g > 1$} \\
+\hline
+\end{tabularx}
+\end{minipage}
+}}
+\end{center}
+
+\newpage
+
+\centerline{\textbf{\large Formulario Seconda Parte}}
+\vspace{-1mm}
 
 \begin{center}
 \fbox{\parbox{0.97\textwidth}{%
@@ -143,7 +279,7 @@ Scelgo $\nu$ più grande tra i $\nu$ che ho trovato e prendo il $K_c$ più grand
 }}
 \end{center}
 
-\vspace{0.5mm} % <-- Spazio ulteriormente ridotto
+\vspace{-1.5mm} % <-- Spazio ulteriormente compattato
 
 \begin{center}
 \fbox{\parbox{0.97\textwidth}{%
@@ -206,7 +342,7 @@ Verificare che i diagrammi stiano sotto i relativi spigoli.
 }}
 \end{center}
 
-\vspace{0.5mm} % <-- Spazio ulteriormente ridotto
+\vspace{-1.5mm} % <-- Spazio ulteriormente compattato
 
 % --- NUOVA TABELLA DELLE RETI DI COMPENSAZIONE ---
 \begin{center}
@@ -226,13 +362,13 @@ Verificare che i diagrammi stiano sotto i relativi spigoli.
 \hline
 \textbf{\underline{Rete LAG}}\newline diminuzione modulo\newline $R_i(s) = \dfrac{1 + \frac{s}{m_i p_i}}{1 + \frac{s}{p_i}}, m_i > 1$ 
 & $m_i = 10^{\frac{R_{db}}{20}}$\newline \newline $p_i = \dfrac{\omega_{cdes}}{\omega_{norm}}$ 
-& \underline{Diminuzione di $|K_c|$} 
-& Solo quando ho $K_c$ libero ($|K_c| = 1$) \\
+& \underline{Diminuzione di $|K_c|$}\newline \mbox{$K_c = K_{c,in} 10^{\frac{-|K_{c,dB}^{sub}|}{20}}$}
+& Solo quando ho $K_c$ libero ($|K_c| = 1$) o se ho scelto $K_c$ maggiore del vincolo (fare attenzione a non fare scendere il nuovo $K_c$ sotto al vincolo) \\
 \hline
 \underline{Aumento di $|K_c|$}\newline aumento di modulo 
 & \mbox{$K_c = K_{c,in} 10^{\frac{|K_{c,dB}^{add}|}{20}}$}
-& \mbox{$K_c = K_{c,in} 10^{\frac{-|K_{c,dB}^{sub}|}{20}}$}
-& {\scriptsize $G_{ry}(s) = \frac{T(s)}{G_fG_s}r(t) + S(s)d_p(t) + S(s)G_pd_a(t) - \frac{T(s)}{G_s}d_s(t)$} \\
+& 
+& \\
 \hline
 \end{tabularx}
 }}
