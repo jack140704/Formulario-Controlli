@@ -87,40 +87,6 @@ $\mathcal{L}\{\varepsilon(t)\} = \frac{1}{s} \quad \mathcal{Z}\{\varepsilon(t)\}
 \begin{center}
 \fbox{\parbox{0.97\textwidth}{%
 \footnotesize
-\textbf{\underline{Linearizzazione di sistemi non LTI}}
-\vspace{2pt}
-
-\sub{Calcolo punti di equilibrio}
-\vspace{-2pt}
-\[
-\begin{cases} \dot{x} = f(x,u) \\ y = g(x,u) \end{cases} \rightarrow
-\begin{cases} \dot{x}_1 = f_1(x,u) \\ \dot{x}_2 = f_2(x,u) \end{cases} \xrightarrow[\text{derivate a zero}]{\text{impongo}}
-\begin{cases} f_1(x,u) = 0 \\ f_2(x,u) = 0 \end{cases} \Rightarrow
-\bar{x} = [\bar{x}_1\ \ \bar{x}_2\ \ \dots]
-\]
-
-\sub{Linearizzazione}
-\vspace{-2pt}
-\[
-\begin{cases} \delta\dot{x}(t) = A\delta x(t) + B\delta u(t) \\ \delta y(t) = C\delta x(t) + D\delta u(t) \end{cases}
-\]
-\vspace{2pt}
-
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
-$ A = \frac{\partial f(x,u)}{\partial x} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial f_1/\partial x_1 & \dots & \partial f_1/\partial x_n \\ \vdots & \ddots & \vdots \\ \partial f_n/\partial x_1 & \dots & \partial f_n/\partial x_n \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ &
-$ C = \frac{\partial g(x,u)}{\partial x} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial g_1/\partial x_1 & \dots & \partial g_1/\partial x_n \\ \vdots & \ddots & \vdots \\ \partial g_q/\partial x_1 & \dots & \partial g_q/\partial x_n \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ \\
-$ B = \frac{\partial f(x,u)}{\partial u} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial f_1/\partial u_1 & \dots & \partial f_1/\partial u_p \\ \vdots & \ddots & \vdots \\ \partial f_n/\partial u_1 & \dots & \partial f_n/\partial u_p \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ &
-$ D = \frac{\partial g(x,u)}{\partial u} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial g_1/\partial u_1 & \dots & \partial g_1/\partial u_p \\ \vdots & \ddots & \vdots \\ \partial g_q/\partial u_1 & \dots & \partial g_q/\partial u_p \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ \\
-\end{tabularx}
-}}
-\end{center}
-
-\vspace{-1.5mm}
-
-\begin{center}
-\fbox{\parbox{0.97\textwidth}{%
-\footnotesize
 \noindent\textbf{\underline{Stabilità}} \quad $Spec(A) = \{\lambda_i \in \mathbb{C} \mid p_A(\lambda_i) = 0\}$=autovalori A \quad e = \texttt{eig(A)}; \texttt{[V, D]=eig(A)}
 
 \vspace{-2pt}
@@ -156,6 +122,86 @@ instabile &
 \hline
 \end{tabularx}
 \end{minipage}
+
+\vspace{4pt}
+\textbf{Nota:} Molteplicità geometrica \quad $m_g(\lambda_0) = \text{rank}(A) - \text{rank}(A - \lambda_0 I_n)$
+}}
+\end{center}
+
+\vspace{-1.5mm}
+
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\footnotesize
+\textbf{\underline{Linearizzazione di sistemi non LTI}}
+\vspace{2pt}
+
+\sub{Calcolo punti di equilibrio}
+\vspace{-2pt}
+\[
+\begin{cases} \dot{x} = f(x,u) \\ y = g(x,u) \end{cases} \rightarrow
+\begin{cases} \dot{x}_1 = f_1(x,u) \\ \dot{x}_2 = f_2(x,u) \end{cases} \xrightarrow[\text{derivate a zero}]{\text{impongo}}
+\begin{cases} f_1(x,u) = 0 \\ f_2(x,u) = 0 \end{cases} \Rightarrow
+\bar{x} = [\bar{x}_1\ \ \bar{x}_2\ \ \dots]
+\]
+
+\sub{Linearizzazione}
+\vspace{-2pt}
+\[
+\begin{cases} \delta\dot{x}(t) = A\delta x(t) + B\delta u(t) \\ \delta y(t) = C\delta x(t) + D\delta u(t) \end{cases}
+\]
+\vspace{2pt}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+$ A = \frac{\partial f(x,u)}{\partial x} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial f_1/\partial x_1 & \dots & \partial f_1/\partial x_n \\ \vdots & \ddots & \vdots \\ \partial f_n/\partial x_1 & \dots & \partial f_n/\partial x_n \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ &
+$ C = \frac{\partial g(x,u)}{\partial x} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial g_1/\partial x_1 & \dots & \partial g_1/\partial x_n \\ \vdots & \ddots & \vdots \\ \partial g_q/\partial x_1 & \dots & \partial g_q/\partial x_n \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ \\
+$ B = \frac{\partial f(x,u)}{\partial u} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial f_1/\partial u_1 & \dots & \partial f_1/\partial u_p \\ \vdots & \ddots & \vdots \\ \partial f_n/\partial u_1 & \dots & \partial f_n/\partial u_p \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ &
+$ D = \frac{\partial g(x,u)}{\partial u} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}} \hspace{-2mm} = \begin{bmatrix} \partial g_1/\partial u_1 & \dots & \partial g_1/\partial u_p \\ \vdots & \ddots & \vdots \\ \partial g_q/\partial u_1 & \dots & \partial g_q/\partial u_p \end{bmatrix}_{\substack{x=\bar{x}\\u=\bar{u}}} $ \\
+\end{tabularx}
+}}
+\end{center}
+
+\vspace{-1.5mm}
+
+\begin{center}
+\fbox{\parbox[t]{0.64\textwidth}{%
+\footnotesize
+\textbf{\underline{Controllabilità e retroazione statica dello stato}}
+\vspace{2pt}
+
+\textbf{1)} Voglio assegnare a $(A-BK)$ gli autovalori scelti da me nel vettore $\lambda = [\lambda_1\ \lambda_2\ \dots\ \lambda_n]$.\\
+\textbf{2)} Verifico se il problema può essere risolto:
+\vspace{-4pt}
+\[
+M_R = \mathtt{ctrb}(A,B), \quad r = \mathtt{rank}(M_R), \quad r \begin{cases} = n \Rightarrow \text{OK, posso risolvere} \\ < n \Rightarrow \text{NO, non ha soluzione} \end{cases}
+\]
+\vspace{-4pt}
+
+\textbf{3)} Posso calcolare $K$ t.c. $\mathtt{eig}(A-BK) = \lambda$ usando:
+\begin{itemize}[leftmargin=15pt, nosep, before=\vspace{-2pt}, after=\vspace{-2pt}]
+    \item $K = \mathtt{place}(A, B, \lambda) \Rightarrow$ non permette di assegnare tutti autovalori identici
+    \item oppure $K = \mathtt{acker}(A, B, \lambda) \Rightarrow$ numericamente più ``fragile''
+\end{itemize}
+}}
+\hfill
+\fbox{\parbox[t]{0.31\textwidth}{%
+\footnotesize
+\textbf{\underline{Stabilità del sistema linearizzato}}
+\vspace{2pt}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+\hline
+\textbf{Autovalori $\lambda_i(A)$} & \textbf{Stabilità} \\
+\hline
+$\forall i : Re(\lambda_i(A)) < 0$ & \textbf{Asintoticamente stabile} \\
+\hline
+$\exists i : Re(\lambda_i(A)) > 0$ & \textbf{Instabile} \\
+\hline
+$\forall i : Re(\lambda_i(A)) \le 0$ & \textbf{Nessuna conclusione} \\
+\hline
+\end{tabularx}
 }}
 \end{center}
 
