@@ -57,6 +57,9 @@ $Y_{zi}(s) = C(sI - A)^{-1}x(0)$ & $Y_{zs}(s) = H(s)U(s)$ \\
 $Y_{zi}(z) = C z(zI - A)^{-1}x(0)$ & $Y_{zs}(z) = H(z)U(z)$ \\
 \hline
 \end{tabularx}
+\vspace{2pt}
+\textbf{Nota}: per creare sistema continuo: \texttt{sys = ss(A, B, C, D)}\\
+per creare sistema discreto: \texttt{sys = ss(A, B, C, D, -1)}
 \end{minipage}%
 \hfill
 \begin{minipage}[t]{0.48\textwidth}
