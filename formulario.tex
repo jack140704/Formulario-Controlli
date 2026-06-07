@@ -35,14 +35,15 @@
 \begin{center}
 \fbox{\parbox{0.97\textwidth}{%
 \footnotesize
-\begin{multicols}{2}
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
 \centerline{\textbf{\underline{Soluzioni delle equazioni di stato}}}
-\vspace{-2pt}
+\vspace{4pt}
 
 {\centering $x(t) = x_{zi}(t) + x_{zs}(t) \quad x(k) = x_{zi}(k) + x_{zs}(k)$\par}
 
-\vspace{2pt}
-\renewcommand{\arraystretch}{1.2}
+\vspace{4pt}
+\renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
 \hline
 $X_{zi}(s) = (sI - A)^{-1}x(0)$ & $X_{zs}(s) = (sI - A)^{-1}BU(s)$ \\
@@ -56,14 +57,15 @@ $Y_{zi}(s) = C(sI - A)^{-1}x(0)$ & $Y_{zs}(s) = H(s)U(s)$ \\
 $Y_{zi}(z) = C z(zI - A)^{-1}x(0)$ & $Y_{zs}(z) = H(z)U(z)$ \\
 \hline
 \end{tabularx}
-
-\columnbreak
-
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\vspace{0pt}
 \centerline{\textbf{\underline{formule utili}}}
-\vspace{-2pt}
+\vspace{4pt}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3.8cm}|}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
 \hline
 contributo poli complessi e coniugati (TC) \newline $2|R|e^{Re(p_i)t} \cdot \cos(Im(p_i)t + \angle R)$ & 
 $\mathcal{L}\left\{ \frac{t^n e^{-\lambda t}}{n!} \right\} = \frac{1}{(s + \lambda)^{n+1}}$ \\
@@ -75,10 +77,10 @@ $\mathcal{Z}\{a^k\} = \frac{z}{z-a}, \quad \tilde{F}(z) = \frac{F(z)}{z}$ &
 $\mathcal{Z}\{f(k+1)\} = zF(z) - zf(0)$ \\
 \hline
 $\tau_i = \left| \frac{1}{Re(p_i)} \right|$ (costanti di tempo poli) & 
-$\mathcal{L}\{\varepsilon(t)\} = \frac{1}{s} \quad \mathcal{Z}\{\varepsilon(t)\} = \frac{z}{z-1}$ \\
+$\mathcal{L}\{\varepsilon(t)\} = \frac{1}{s} \newline \mathcal{Z}\{\varepsilon(t)\} = \frac{z}{z-1}$ \\
 \hline
 \end{tabularx}
-\end{multicols}
+\end{minipage}
 }}
 \end{center}
 
@@ -165,6 +167,7 @@ $ D = \frac{\partial g(x,u)}{\partial u} \bigg|_{\substack{x=\bar{x}\\u=\bar{u}}
 \vspace{-1.5mm}
 
 \begin{center}
+\makebox[\dimexpr 0.97\textwidth + 2\fboxsep + 2\fboxrule\relax][s]{%
 \fbox{\parbox[t]{0.64\textwidth}{%
 \footnotesize
 \textbf{\underline{Controllabilità e retroazione statica dello stato}}
@@ -183,7 +186,9 @@ M_R = \mathtt{ctrb}(A,B), \quad r = \mathtt{rank}(M_R), \quad r \begin{cases} = 
     \item $K = \mathtt{place}(A, B, \lambda) \Rightarrow$ non permette di assegnare tutti autovalori identici
     \item oppure $K = \mathtt{acker}(A, B, \lambda) \Rightarrow$ numericamente più ``fragile''
 \end{itemize}
-}}
+\vspace{2pt}
+\textbf{4)} Nuovo sistema: $\begin{cases} \dot{x} = (A-BK)x + B\alpha u \\ y(t) = Cx(t) + Du(t) \end{cases}$
+}}%
 \hfill
 \fbox{\parbox[t]{0.31\textwidth}{%
 \footnotesize
@@ -202,6 +207,29 @@ $\exists i : Re(\lambda_i(A)) > 0$ & \textbf{Instabile} \\
 $\forall i : Re(\lambda_i(A)) \le 0$ & \textbf{Nessuna conclusione} \\
 \hline
 \end{tabularx}
+}}%
+}
+\end{center}
+
+\vspace{-1.5mm}
+
+\begin{center}
+\fbox{\parbox{0.97\textwidth}{%
+\footnotesize
+\textbf{\underline{Osservabilità e Progetto dell'osservatore}}
+\vspace{2pt}
+
+\textbf{Verifica Osservabilità:}\quad $M_o = \mathtt{obsv}(A,C) \rightarrow \text{se } \mathtt{rank}(M_o) = n \quad \text{sistema completamente osservabile}$
+
+\vspace{2pt}
+\textbf{Progetto osservatore:}\quad $L = (\mathtt{place}(A', C', \lambda_{des}))'$
+
+\vspace{2pt}
+\textbf{Modello dell'osservatore:} \quad
+$\begin{cases}
+\dot{\hat{x}} = A\hat{x}(t) + Bu(t) - L(\hat{y}(t) - y(t)) \\
+\hat{y}(t) = C\hat{x}(t) + Du(t)
+\end{cases}$
 }}
 \end{center}
 
