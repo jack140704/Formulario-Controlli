@@ -58,8 +58,9 @@ $Y_{zi}(z) = C z(zI - A)^{-1}x(0)$ & $Y_{zs}(z) = H(z)U(z)$ \\
 \hline
 \end{tabularx}
 \vspace{2pt}
-\textbf{Nota}: per creare sistema continuo: \texttt{sys = ss(A, B, C, D)}\\
-per creare sistema discreto: \texttt{sys = ss(A, B, C, D, -1)}
+\textbf{Nota}: per creare sistema continuo: \texttt{sys = ss(A, B, C, D)} \\ discreto: \texttt{sys = ss(A, B, C, D, -1)}\\
+per simulare risposta libera: \texttt{initial(sys, x0)}\\
+per simulare risposta forzata: \texttt{step(sys)} o \texttt{lsim(sys, u, t)}
 \end{minipage}%
 \hfill
 \begin{minipage}[t]{0.48\textwidth}
@@ -256,7 +257,7 @@ $\omega_c$ da $t_{s,\varepsilon\%}$; \;$\nu$ da $d_a$ e/o $d_p$; \;$M_S^{LF}$, $
 G_F=\frac{1}{G_s\,K_d} \quad \text{se } \nu+p>0
 \]
 
-\sub{b) Calcolo $\nu$ e $K_c$ da $\varepsilon_r$}
+\sub{b) Calcolo $\nu$ e $K_c$ da $\varepsilon_r$ (\texttt{Tabella Part7 pag.44})} 
 se $\varepsilon_r=0 \rightarrow \nu>h-p, |K_c|=\forall$\\
 se $\varepsilon_r\neq 0 \rightarrow \nu = h-p$ \;\;
 \[
